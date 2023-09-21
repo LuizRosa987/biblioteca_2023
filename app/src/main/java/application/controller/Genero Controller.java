@@ -1,6 +1,6 @@
 package application.controller
 
-import org.springframeworkbeans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,7 +30,7 @@ public class GeneroController {
     @RequestMapping(value = "/insert", method = requestMethod.POST)
     public String insert(@RequestParam("nome") String nome) {
         Genero genero = new Genero();
-        genero setNome(nome);
+        genero.setNome(nome);
 
         generoRepo.save(genero);
         
