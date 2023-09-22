@@ -1,11 +1,11 @@
-package application.controller
-
+package application.controller;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframeworkweb.bind.annotation.requestMethod;
-import org.springframeworkweb.bind.annotation.RequestParam; 
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam; 
 
 import application.model.Genero;
 import application.model.GeneroRepository;
@@ -13,12 +13,12 @@ import application.model.GeneroRepository;
 @Controller
 @RequestMapping("/genero")
 public class GeneroController {
-    @Autowided
+    @Autowired
     private GeneroRepository generoRepo;
 
-    @@RequestMapping("/list")
+    @RequestMapping("/list")
     public String list(Model model) {
-        model.addAttribute("generos", generoRepo.finalAll());
+        model.addAttribute("generos", generoRepo.findAll());
         return "return/list";
     }
 
@@ -27,7 +27,7 @@ public class GeneroController {
         return "/genero/insert";
     }
 
-    @RequestMapping(value = "/insert", method = requestMethod.POST)
+    @RequestMapping(value = "/insert", method = RequestMethod.POST)
     public String insert(@RequestParam("nome") String nome) {
         Genero genero = new Genero();
         genero.setNome(nome);
